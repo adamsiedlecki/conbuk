@@ -26,8 +26,9 @@ body{
 .logo{
     font-family: 'Anton', sans-serif;
     display: inline-block;
-    float: left;
     font-size: 800%;
+    float: left;
+
 }
 .logo2{
     font-family: 'Anton', sans-serif;

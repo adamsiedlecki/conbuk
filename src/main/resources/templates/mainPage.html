@@ -28,17 +28,24 @@
         <p class="description">Project which allows people to share their ideas that they wish to come true.</p>
         <br>
         <div class="actions">
-            <input type="button" value="Log in" onClick="location.href = 'login'" >
-            <input type="button" value="Register" onClick="location.href = 'login'" >
+            <input onClick="location.href = 'login'" type="button" value="Log in">
+            <input onClick="location.href = 'login'" type="button" value="Register">
         </div>
 
     </div>
 
     <script th:src="@{js/particles/particles.js}"></script>
+    <script th:inline="javascript">
+        var imgSrc = /*[[@{img/logo-centered-small.png}]]*/ 'smth.png';
 
+
+    </script>
     <script th:inline="javascript" th:src="@{js/particles/particles-config-with-logo.js}"></script>
     <script>
+
         tsParticles.load('particles-js', particles);
+
+
     </script>
 
 

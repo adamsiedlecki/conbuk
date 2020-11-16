@@ -1,14 +1,14 @@
     //alert(document.getElementById("logoImage").src);
-    var imgPath = document.getElementById("logoImage").src;
+    //var imgPath = document.getElementById("logoImage").src;
 
         const particles = {
-            "fpsLimit": 60,
+            "fpsLimit": 100,
             "particles": {
             "number": {
-                "value": 50,
+                "value": 1,
                 "density": {
                 "enable": true,
-                "value_area": 800
+                "value_area": 80
                 }
             },
             "color": {
@@ -29,7 +29,9 @@
                 },
                 "images":[
                     {
-                        "src": imgPath, //imageSrc
+                        "src": imgSrc, //imageSrc
+                        "width": 32,
+                        "height": 32
 
                     },
                 ],
@@ -45,8 +47,8 @@
                 }
             },
             "size": {
-                "value": 45,
-                "random": true,
+                "value": 35,
+                "random": false,
                 "anim": {
                 "enable": false,
                 "speed": 20,
@@ -56,15 +58,15 @@
             },
             "links": {
                 "enable": true,
-                "distance": 150,
+                "distance": 250,
                 "color": "#d40e0e",
                 "opacity": 1,
                 "width": 4.7
             },
             "move": {
                 "enable": true,
-                "speed": 6,
-                "direction": "none",
+                "speed": 3,
+                "direction": "right",
                 "random": false,
                 "straight": false,
                 "out_mode": "out",
@@ -122,5 +124,5 @@
             }
         };
 
-particles.shape.images[0].src = imgPath;
+//particles.shape.images[0].src = imgSrc;
 
