@@ -12,7 +12,9 @@
 	<artifactId>conbuk</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>conbuk</name>
-	<description>conbuk aka ConceptBucket is a project which allows people to share theirs ideas that they wish to come true.</description>
+	<description>conbuk aka ConceptBucket is a project which allows people to share their ideas that they wish to come
+		true.
+	</description>
 
 	<properties>
 		<java.version>11</java.version>
