@@ -1,0 +1,64 @@
+body{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+::selection{
+   background: black;
+   color: white;
+}
+.container{
+    padding-top: 10%;
+    width: 700px;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+
+
+}
+.header{
+    width: 100%;
+    min-height: 20%;
+    overflow:auto;
+    padding: 10px;
+    clear: both;
+}
+.logo{
+    font-family: 'Anton', sans-serif;
+    display: inline-block;
+    float: left;
+    font-size: 800%;
+}
+.logo2{
+    font-family: 'Anton', sans-serif;
+    display: inline-block;
+    font-size: 200%;
+}
+p{
+        font-family: 'Oswald', sans-serif;
+        font-size: 25px;
+}
+input[type="button"]{
+    min-width: 80px;
+    min-height: 40px;
+    background-color: black;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 12px;
+
+}
+
+
+
+
+/*
+ particles.js
+*/
+canvas {
+    display:block;
+    background: rgb(33,36,50);
+    position: fixed;
+    z-index: -1;
+}

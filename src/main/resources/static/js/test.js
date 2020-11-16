@@ -1,0 +1,1 @@
+alert("Test by test.js");
