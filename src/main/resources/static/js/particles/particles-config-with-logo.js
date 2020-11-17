@@ -5,7 +5,7 @@
             "fpsLimit": 100,
             "particles": {
             "number": {
-                "value": 1,
+                "value": 2,
                 "density": {
                 "enable": true,
                 "value_area": 80
@@ -66,7 +66,7 @@
                 "enable": true,
                 "speed": 3,
                 "direction": "right",
-                "random": false,
+                "random": true,
                 "straight": false,
                 "out_mode": "out",
                 "attract": {
