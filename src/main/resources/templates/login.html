@@ -17,6 +17,10 @@
 </head>
 <body>
 
+<div sec:authorize="isAuthenticated()">
+    <script>location.href="/ranking";</script>
+</div>
+
 <div id="particles-js"></div>
 
 <div class="container">
