@@ -30,8 +30,7 @@
                 "images":[
                     {
                         "src": imgSrc, //imageSrc
-                        "width": 32,
-                        "height": 32
+
 
                     },
                 ],
