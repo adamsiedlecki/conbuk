@@ -25,10 +25,21 @@
     </div>
 
     <table>
-        <tr th:each="concept : ${concepts}">
+        <tr>
+            <td><span> NR: </span></td>
+            <td><span> LIKES: </span></td>
+            <td><span> NAME: </span></td>
+            <td><span> DISLIKES: </span></td>
+            <td><span> AUTHOR: </span></td>
 
+        </tr>
+        <tr th:each="concept,stat : ${concepts}">
+
+            <td><span th:text="${stat.count}">  </span></td>
             <td><span th:text="${concept.likeUsers.size}">  </span></td>
             <td><span th:text="${concept.name}">  </span></td>
+            <td><span th:text="${concept.dislikeUsers.size}">  </span></td>
+            <td><span th:text="${concept.author.username}">  </span></td>
         </tr>
     </table>
 
