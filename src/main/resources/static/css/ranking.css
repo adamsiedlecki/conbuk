@@ -3,8 +3,47 @@ body{
     margin: 0;
     padding: 0;
 }
+.menu-right{
+    position: fixed;
+    width: 150px;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.menuElement{
+    padding: 30px;
+}
+.menuElement:hover{
+    opacity: 0.5;
+}
+
 ::selection{
 
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+td{
+  border: 1px solid black;
+  font-family: 'Oswald', sans-serif;
+  font-size: 25px;
+  margin: 0;
+  padding: 10px;
+}
+tr:hover{
+    background-color: #eb2135;
+    opacity: 0.8;
 }
 .container{
     padding-top: 10px;

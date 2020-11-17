@@ -22,7 +22,8 @@ public class RankingController {
     @GetMapping("/ranking")
     public String getRanking(Model model) {
         List<Concept> concepts = conceptService.getTop100();
-        model.addAttribute(concepts);
+        System.out.println("RANKING: " + concepts);
+        model.addAttribute("concepts", concepts);
         return "ranking";
     }
 }

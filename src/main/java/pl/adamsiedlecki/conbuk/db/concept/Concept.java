@@ -79,4 +79,15 @@ public class Concept {
         this.author = author;
     }
 
+    @Override
+    public String toString() {
+        return "Concept{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", author=" + author +
+                ", likeUsers=" + likeUsers +
+                ", dislikeUsers=" + dislikeUsers +
+                '}';
+    }
 }

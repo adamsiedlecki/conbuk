@@ -26,13 +26,27 @@
 
     <table>
         <tr th:each="concept : ${concepts}">
-            <td><span th:text="${concept.likeCounter}">  </span></td>
+
+            <td><span th:text="${concept.likeUsers.size}">  </span></td>
             <td><span th:text="${concept.name}">  </span></td>
-            <td><span th:text="${concept.author.username}">  </span></td>
         </tr>
     </table>
 
+</div>
 
+<div class="menu-right">
+    <div class="menuElement" onClick="location.href='/ranking'">
+        <a>RANKING</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/add-concept'">
+        <a>ADD CONCEPT</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/concept-map'">
+        <a>CONCEPT MAP</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/logout'">
+        <a>LOGOUT</a>
+    </div>
 </div>
 
 
