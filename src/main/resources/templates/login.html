@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>conbuk</title>
     <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style-form.css}">
     <link rel="icon"
           th:href="@{img/logo500.png}"
           type="image/png">
@@ -23,11 +24,18 @@
         <a class="logo">Conbuk</a>
     </div>
 
-    <form>
-        <label for="username"></label>
-        <input id="username" name="username" type="text">
-        <input id="password" name="password" type="password">
-        <input type="submit" value="LOG ME IN">
+    <p class="error" th:if="${loginError}">Wrong user or password</p>
+
+    <form method="post" th:action="@{/login}">
+        <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+
+        <label for="username">username: </label>
+        <input autofocus="autofocus" id="username" name="username" required="true" type="text">
+        <br>
+        <label for="password">password: </label>
+        <input id="password" name="password" required="true" type="password">
+        <br>
+        <input class="button" type="submit" value="LOG ME IN">
     </form>
 
 </div>
