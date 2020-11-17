@@ -24,7 +24,9 @@
         <a class="logo">Conbuk</a>
     </div>
 
-    <p class="error" th:if="${loginError}">Wrong user or password</p>
+    <p class="error" th:if="${(error != null) and (error[0] == 'true')}">
+        Wrong user or password
+    </p>
 
     <form method="post" th:action="@{/login}">
         <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
@@ -49,11 +51,7 @@
 </script>
 <script th:inline="javascript" th:src="@{js/particles/particles-config-with-logo.js}"></script>
 <script>
-
         tsParticles.load('particles-js', particles);
-
-
-
 </script>
 
 

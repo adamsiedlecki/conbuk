@@ -23,16 +23,18 @@ public class UserDs implements UserDetailsService {
 
         User user = new User();
         user.setUsername("a");
-        user.setPassword(passwordEncoder.encode("a")); // passwordEncoder.encode("a")
+        user.setPassword(passwordEncoder.encode("a"));
         userRepo.saveAndFlush(user);
-        System.out.println("USER-DS created!");
+
+        User user2 = new User();
+        user2.setUsername("admin");
+        user2.setPassword(passwordEncoder.encode("admin"));
+        userRepo.saveAndFlush(user2);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        System.out.println("USERDS LOAD USER BY USERNAME");
         User user = userRepo.findByUsername(username);
-        System.out.println(user);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

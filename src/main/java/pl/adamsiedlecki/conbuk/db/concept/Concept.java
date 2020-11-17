@@ -3,6 +3,8 @@ package pl.adamsiedlecki.conbuk.db.concept;
 import pl.adamsiedlecki.conbuk.db.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Concept {
@@ -12,11 +14,38 @@ public class Concept {
     private Long id;
     private String name;
     private String description;
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = User.class)
-    @JoinColumn(name = "author_id")
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     private User author;
-    private Long likeCounter;
-    private Long dislikeCounter;
+    @ManyToMany()
+    @JoinTable(
+            name = "like_users",
+            joinColumns = {@JoinColumn(name = "concept_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> likeUsers = new ArrayList<>();
+    @ManyToMany()
+    @JoinTable(
+            name = "dislike_users",
+            joinColumns = {@JoinColumn(name = "concept_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> dislikeUsers = new ArrayList<>();
+
+    public List<User> getLikeUsers() {
+        return likeUsers;
+    }
+
+    public void setLikeUsers(List<User> likeUsers) {
+        this.likeUsers = likeUsers;
+    }
+
+    public List<User> getDislikeUsers() {
+        return dislikeUsers;
+    }
+
+    public void setDislikeUsers(List<User> dislikeUsers) {
+        this.dislikeUsers = dislikeUsers;
+    }
 
     public Long getId() {
         return id;
@@ -50,19 +79,4 @@ public class Concept {
         this.author = author;
     }
 
-    public Long getLikeCounter() {
-        return likeCounter;
-    }
-
-    public void setLikeCounter(Long likeCounter) {
-        this.likeCounter = likeCounter;
-    }
-
-    public Long getDislikeCounter() {
-        return dislikeCounter;
-    }
-
-    public void setDislikeCounter(Long dislikeCounter) {
-        this.dislikeCounter = dislikeCounter;
-    }
 }

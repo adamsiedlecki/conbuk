@@ -1,8 +1,10 @@
 package pl.adamsiedlecki.conbuk.db.user;
 
+import pl.adamsiedlecki.conbuk.db.concept.Concept;
 import pl.adamsiedlecki.conbuk.db.user.userRole.UserRole;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,6 +18,26 @@ public class User {
     private String password;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRole> roles;
+    @ManyToMany(mappedBy = "likeUsers")
+    private List<Concept> likeConcepts = new ArrayList<>();
+    @ManyToMany(mappedBy = "dislikeUsers")
+    private List<Concept> dislikeConcepts = new ArrayList<>();
+
+    public List<Concept> getLikeConcepts() {
+        return likeConcepts;
+    }
+
+    public void setLikeConcepts(List<Concept> likeConcepts) {
+        this.likeConcepts = likeConcepts;
+    }
+
+    public List<Concept> getDislikeConcepts() {
+        return dislikeConcepts;
+    }
+
+    public void setDislikeConcepts(List<Concept> dislikeConcepts) {
+        this.dislikeConcepts = dislikeConcepts;
+    }
 
     public Long getId() {
         return id;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/ranking.css}">
+
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+    <div class="header">
+        <a class="logo">Conbuk</a>
+    </div>
+
+    <table>
+        <tr th:each="concept : ${concepts}">
+            <td><span th:text="${concept.likeCounter}">  </span></td>
+            <td><span th:text="${concept.name}">  </span></td>
+            <td><span th:text="${concept.author.username}">  </span></td>
+        </tr>
+    </table>
+
+
+</div>
+
+
+</body>
+</html>
