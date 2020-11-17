@@ -7,5 +7,8 @@ Requirements to run:
 
 Technologies used:
 - Java
-- Spring Boot
+- Spring Boot with Spring Security
 - Thymeleaf
+- HyperSQL
+- JPA/Hibernate
+- particlesjs by VincentGarreau https://github.com/VincentGarreau/particles.js/
