@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+    <div class="header">
+        <a class="logo">Conbuk</a>
+    </div>
+
+    <form>
+        <label for="username"></label>
+        <input id="username" name="username" type="text">
+        <input id="password" name="password" type="password">
+        <input type="submit" value="LOG ME IN">
+    </form>
+
+</div>
+
+<script th:src="@{js/particles/particles.js}"></script>
+<script th:inline="javascript">
+        var imgSrc = /*[[@{img/logo-text-square.png}]]*/ 'smth.png';
+
+
+
+</script>
+<script th:inline="javascript" th:src="@{js/particles/particles-config-with-logo.js}"></script>
+<script>
+
+        tsParticles.load('particles-js', particles);
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -24,9 +24,7 @@
                 "polygon": {
                 "nb_sides": 5
                 },
-                "image":{
-                "src":
-                }
+
             },
             "opacity": {
                 "value": 0.5,

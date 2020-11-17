@@ -24,7 +24,8 @@ body{
     clear: both;
 }
 .logo{
-    font-family: 'Anton', sans-serif;
+    /*font-family: 'Anton', sans-serif;*/
+    font-family: 'Caveat', cursive;
     display: inline-block;
     font-size: 800%;
 
