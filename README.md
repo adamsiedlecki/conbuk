@@ -12,3 +12,6 @@ Technologies used:
 - HyperSQL
 - JPA/Hibernate
 - particlesjs by VincentGarreau https://github.com/VincentGarreau/particles.js/
+- Javascript
+- HTML
+- CSS
