@@ -36,6 +36,13 @@ public class ConceptService {
         c3.setName("school but without marks");
         c3.getLikeUsers().add(userDs.getUserByUsername("admin").get());
         conceptRepo.saveAndFlush(c3);
+
+        for (int i = 1; i <= 100; i++) {
+            Concept c4 = new Concept();
+            c4.setAuthor(userDs.getUserByUsername("admin").get());
+            c4.setName("test concept nr: " + i);
+            conceptRepo.saveAndFlush(c4);
+        }
     }
 
     public boolean saveConcept(Concept concept) {
