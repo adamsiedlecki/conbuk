@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.adamsiedlecki.conbuk.db.user.UserDs;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -22,6 +23,7 @@ public class ConceptService {
         Concept c = new Concept();
         c.setAuthor(userDs.getUserByUsername("admin").get());
         c.setName("face*ook but without spying");
+        c.setSaveTime(LocalDateTime.now());
         conceptRepo.saveAndFlush(c);
 
         Concept c2 = new Concept();
@@ -29,20 +31,22 @@ public class ConceptService {
         c2.setName("country but without taxes");
         c2.getLikeUsers().add(userDs.getUserByUsername("admin").get());
         c2.getLikeUsers().add(userDs.getUserByUsername("a").get());
+        c2.setSaveTime(LocalDateTime.now());
         conceptRepo.saveAndFlush(c2);
 
         Concept c3 = new Concept();
+        c3.setSaveTime(LocalDateTime.now());
         c3.setAuthor(userDs.getUserByUsername("admin").get());
         c3.setName("school but without marks");
         c3.getLikeUsers().add(userDs.getUserByUsername("admin").get());
         conceptRepo.saveAndFlush(c3);
 
-        for (int i = 1; i <= 100; i++) {
-            Concept c4 = new Concept();
-            c4.setAuthor(userDs.getUserByUsername("admin").get());
-            c4.setName("test concept nr: " + i);
-            conceptRepo.saveAndFlush(c4);
-        }
+//        for (int i = 1; i <= 100; i++) {
+//            Concept c4 = new Concept();
+//            c4.setAuthor(userDs.getUserByUsername("admin").get());
+//            c4.setName("test concept nr: " + i);
+//            conceptRepo.saveAndFlush(c4);
+//        }
     }
 
     public boolean saveConcept(Concept concept) {
@@ -62,5 +66,14 @@ public class ConceptService {
     public List<Concept> getTop100() {
         Pageable pageable = PageRequest.of(0, 100);
         return conceptRepo.findTop(pageable);
+    }
+
+    public List<Concept> getNewest() {
+        Pageable pageable = PageRequest.of(0, 100);
+        return conceptRepo.find100Newest(pageable);
+    }
+
+    public List<Concept> findAll() {
+        return conceptRepo.findAll();
     }
 }

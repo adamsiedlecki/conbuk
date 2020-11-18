@@ -3,6 +3,7 @@ package pl.adamsiedlecki.conbuk.db.concept;
 import pl.adamsiedlecki.conbuk.db.user.User;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Concept {
     private Long id;
     private String name;
     private String description;
+    private LocalDateTime saveTime;
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     private User author;
     @ManyToMany()
@@ -29,6 +31,8 @@ public class Concept {
             joinColumns = {@JoinColumn(name = "concept_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
+
+
     private List<User> dislikeUsers = new ArrayList<>();
 
     public List<User> getLikeUsers() {
@@ -78,6 +82,16 @@ public class Concept {
     public void setAuthor(User author) {
         this.author = author;
     }
+
+
+    public LocalDateTime getSaveTime() {
+        return saveTime;
+    }
+
+    public void setSaveTime(LocalDateTime saveTime) {
+        this.saveTime = saveTime;
+    }
+
 
     @Override
     public String toString() {

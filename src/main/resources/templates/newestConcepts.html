@@ -24,10 +24,10 @@
 
     <table>
         <tr>
-            <td colspan="5"><span> TOP 100 </span></td>
+            <td colspan="5"><span> NEWEST </span></td>
         </tr>
         <tr>
-            <td><span> NR: </span></td>
+            <td><span> SAVE TIME: </span></td>
             <td><span> LIKES: </span></td>
             <td><span> NAME: </span></td>
             <td><span> DISLIKES: </span></td>
@@ -36,7 +36,7 @@
         </tr>
         <tr th:each="concept,stat : ${concepts}">
 
-            <td><span th:text="${stat.count}">  </span></td>
+            <td><span th:text="${concept.saveTime}">  </span></td>
             <td><span th:text="${concept.likeUsers.size}">  </span></td>
             <td><span th:text="${concept.name}">  </span></td>
             <td><span th:text="${concept.dislikeUsers.size}">  </span></td>
@@ -46,7 +46,7 @@
 
 </div>
 
-    <div th:insert="fragments/general.html :: menu-right"></div>
+<div th:insert="fragments/general.html :: menu-right"></div>
 
 </body>
 </html>

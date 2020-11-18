@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/ranking.css}">
+    <link rel="stylesheet" th:href="@{css/style-form.css}">
+
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a class="logo">Conbuk</a>
+    </div>
+
+    <form method="post" th:action="@{/add-concept}" th:object="${concept}">
+        <label for="name">Name:
+            <input id="name" th:field="*{name}">
+        </label>
+
+        <br>
+
+        <label for="description">Description:
+            <input id="description" th:field="*{description}"></label>
+        <br>
+
+        <input class="button" type="submit" value="SAVE CONCEPT">
+    </form>
+
+</div>
+
+<div th:insert="fragments/general.html :: menu-right"></div>
+
+
+</body>
+</html>

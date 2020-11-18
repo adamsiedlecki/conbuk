@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/ranking.css}">
+
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a class="logo">Conbuk</a>
+    </div>
+
+</div>
+
+<div class="menu-right" th:fragment="menu-right">
+    <div class="menuElement" onClick="location.href='/'">
+        <a>MAIN PAGE</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/ranking'">
+        <a>RANKING</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/newest-concepts'">
+        <a>NEWEST</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/add-concept'">
+        <a>ADD CONCEPT</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/concept-map'">
+        <a>CONCEPT MAP</a>
+    </div>
+    <div class="menuElement" onClick="location.href='/logout'">
+        <a>LOGOUT (</a><span sec:authentication="name"> </span><a>)</a>
+    </div>
+</div>
+
+
+</body>
+</html>

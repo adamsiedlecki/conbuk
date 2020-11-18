@@ -35,12 +35,14 @@
     <form method="post" th:action="@{/login}">
         <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 
-        <label for="username">username: </label>
-        <input autofocus="autofocus" id="username" name="username" required="true" type="text">
-        <br>
-        <label for="password">password: </label>
-        <input id="password" name="password" required="true" type="password">
-        <br>
+        <label for="username">username:
+            <input autofocus="autofocus" id="username" name="username" required="true" type="text">
+        </label>
+
+        <label for="password">password:
+            <input id="password" name="password" required="true" type="password">
+        </label>
+
         <input class="button" type="submit" value="LOG ME IN">
     </form>
 

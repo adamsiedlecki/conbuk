@@ -12,4 +12,7 @@ public interface ConceptRepo extends JpaRepository<Concept, Long> {
 
     @Query("SELECT c FROM Concept c ORDER BY c.likeUsers.size desc")
     List<Concept> findTop(Pageable pageable);
+
+    @Query("SELECT c FROM Concept c ORDER BY c.saveTime desc")
+    List<Concept> find100Newest(Pageable pageable);
 }
