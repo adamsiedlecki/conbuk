@@ -1,4 +1,4 @@
-package pl.adamsiedlecki.conbuk.controller;
+package pl.adamsiedlecki.conbuk.controller.secured;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

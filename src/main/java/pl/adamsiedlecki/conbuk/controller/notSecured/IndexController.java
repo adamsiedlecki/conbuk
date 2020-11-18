@@ -1,4 +1,4 @@
-package pl.adamsiedlecki.conbuk.controller;
+package pl.adamsiedlecki.conbuk.controller.notSecured;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

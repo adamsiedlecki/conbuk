@@ -1,4 +1,4 @@
-package pl.adamsiedlecki.conbuk.controller;
+package pl.adamsiedlecki.conbuk.controller.secured;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,6 @@ public class RankingController {
     @GetMapping("/ranking")
     public String getRanking(Model model) {
         List<Concept> concepts = conceptService.getTop100();
-        System.out.println("RANKING: " + concepts);
         model.addAttribute("concepts", concepts);
         return "ranking";
     }
