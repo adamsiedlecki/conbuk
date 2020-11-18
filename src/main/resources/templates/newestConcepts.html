@@ -36,7 +36,7 @@
         </tr>
         <tr th:each="concept,stat : ${concepts}">
 
-            <td><span th:text="${concept.saveTime}">  </span></td>
+            <td><span th:text="${#temporals.format(concept.saveTime, 'dd-MM-yyyy HH:mm')}">  </span></td>
             <td><span th:text="${concept.likeUsers.size}">  </span></td>
             <td><span th:text="${concept.name}">  </span></td>
             <td><span th:text="${concept.dislikeUsers.size}">  </span></td>
