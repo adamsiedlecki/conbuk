@@ -27,7 +27,15 @@ public class ConceptService {
         Concept c2 = new Concept();
         c2.setAuthor(userDs.getUserByUsername("admin").get());
         c2.setName("country but without taxes");
+        c2.getLikeUsers().add(userDs.getUserByUsername("admin").get());
+        c2.getLikeUsers().add(userDs.getUserByUsername("a").get());
         conceptRepo.saveAndFlush(c2);
+
+        Concept c3 = new Concept();
+        c3.setAuthor(userDs.getUserByUsername("admin").get());
+        c3.setName("school but without marks");
+        c3.getLikeUsers().add(userDs.getUserByUsername("admin").get());
+        conceptRepo.saveAndFlush(c3);
     }
 
     public boolean saveConcept(Concept concept) {

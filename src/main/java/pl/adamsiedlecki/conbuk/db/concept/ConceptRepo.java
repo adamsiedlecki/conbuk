@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ConceptRepo extends JpaRepository<Concept, Long> {
 
-    @Query("SELECT c FROM Concept c")
+    @Query("SELECT c FROM Concept c ORDER BY c.likeUsers.size desc")
     List<Concept> findTop(Pageable pageable);
 }
