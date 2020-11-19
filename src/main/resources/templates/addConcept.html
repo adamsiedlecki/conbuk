@@ -24,8 +24,8 @@
     </div>
 
     <form method="post" th:action="@{/add-concept}" th:object="${concept}">
-        <label for="name">Name:
-            <input id="name" th:field="*{name}">
+        <label for="name">Concept name:
+            <input id="name" required="required" th:field="*{name}">
         </label>
 
         <br>
