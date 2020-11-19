@@ -8,6 +8,7 @@ import pl.adamsiedlecki.conbuk.db.user.UserDs;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ConceptService {
@@ -75,5 +76,9 @@ public class ConceptService {
 
     public List<Concept> findAll() {
         return conceptRepo.findAll();
+    }
+
+    public Optional<Concept> getConceptByName(String name) {
+        return conceptRepo.getConceptByName(name);
     }
 }

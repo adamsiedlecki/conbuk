@@ -45,6 +45,12 @@
 
         <input class="button" type="submit" value="LOG ME IN">
     </form>
+    <br>
+    <br>
+    <div id="errors" th:if="${(param.error != null) and (param.error[0] == 'true')}">
+        <p>Login OR/AND password IS/ARE incorrect!</p>
+    </div>
+
 
 </div>
 

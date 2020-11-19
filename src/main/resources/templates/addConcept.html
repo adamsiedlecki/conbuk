@@ -36,6 +36,12 @@
 
         <input class="button" type="submit" value="SAVE CONCEPT">
     </form>
+    <br>
+    <br>
+    <p th:if="${added != null && added==true}">Concept added successfully!</p>
+    <p th:if="${added != null && added==false}">An error occurred!</p>
+    <p th:if="${nameIsNotUnique != null && nameIsNotUnique==true}">Error: there is already concept with such name!</p>
+
 
 </div>
 

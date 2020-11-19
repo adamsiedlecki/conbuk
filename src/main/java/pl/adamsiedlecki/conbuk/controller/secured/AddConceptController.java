@@ -14,6 +14,7 @@ import pl.adamsiedlecki.conbuk.db.user.MyUserPrincipal;
 import pl.adamsiedlecki.conbuk.db.user.User;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 public class AddConceptController {
@@ -43,13 +44,21 @@ public class AddConceptController {
         }
 
         if (username == null) {
-            model.addAttribute("concept-added", false);
+            model.addAttribute("added", false);
         } else {
             User user = ((MyUserPrincipal) principal).getUser();
             concept.setAuthor(user);
-            conceptService.saveConcept(concept);
 
-            model.addAttribute("concept-added", true);
+            Optional<Concept> conceptByName = conceptService.getConceptByName(concept.getName());
+            if (!conceptByName.isPresent()) {
+                conceptService.saveConcept(concept);
+                model.addAttribute("added", true);
+
+            } else {
+                model.addAttribute("nameIsNotUnique", true);
+            }
+
+
         }
 
         model.addAttribute(new Concept());
