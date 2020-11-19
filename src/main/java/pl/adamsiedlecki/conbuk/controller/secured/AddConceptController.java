@@ -52,7 +52,6 @@ public class AddConceptController {
             model.addAttribute("concept-added", true);
         }
 
-        System.out.println(conceptService.findAll());
         model.addAttribute(new Concept());
         return "addConcept";
     }
