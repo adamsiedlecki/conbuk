@@ -50,7 +50,7 @@ public class ConceptService {
 //        }
     }
 
-    public boolean saveConcept(Concept concept) {
+    public boolean saveNewConcept(Concept concept) {
         conceptRepo.saveAndFlush(concept);
         return true;
     }
@@ -80,5 +80,9 @@ public class ConceptService {
 
     public Optional<Concept> getConceptByName(String name) {
         return conceptRepo.getConceptByName(name);
+    }
+
+    public void flush() {
+        conceptRepo.flush();
     }
 }

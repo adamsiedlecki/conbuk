@@ -42,11 +42,11 @@ public class LikeController {
             if (conceptByName.isPresent()) {
                 if (conceptByName.get().getLikeUsers().contains(userByUsername.get())) {
                     conceptByName.get().getLikeUsers().remove(userByUsername.get());
-                    conceptService.saveConcept(conceptByName.get());
+                    conceptService.flush();
                     return "" + conceptByName.get().getLikeUsers().size();
                 } else {
                     conceptByName.get().getLikeUsers().add(userByUsername.get());
-                    conceptService.saveConcept(conceptByName.get());
+                    conceptService.flush();
                     return "" + conceptByName.get().getLikeUsers().size();
                 }
 

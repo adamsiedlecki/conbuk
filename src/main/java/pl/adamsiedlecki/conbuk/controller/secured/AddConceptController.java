@@ -51,7 +51,7 @@ public class AddConceptController {
 
             Optional<Concept> conceptByName = conceptService.getConceptByName(concept.getName());
             if (!conceptByName.isPresent()) {
-                conceptService.saveConcept(concept);
+                conceptService.saveNewConcept(concept);
                 model.addAttribute("added", true);
 
             } else {
