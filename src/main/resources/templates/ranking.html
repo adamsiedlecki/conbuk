@@ -37,8 +37,10 @@
         <tr th:each="concept,stat : ${concepts}">
 
             <td><span th:text="${stat.count}">  </span></td>
-            <td><span th:text="${concept.likeUsers.size}">  </span></td>
-            <td><span th:text="${concept.name}">  </span></td>
+            <td th:onClick="|likeOrUndoLike('${stat.count}')|">
+                <div th:id="${stat.count}" th:text="${concept.likeUsers.size}"></div>
+            </td>
+            <td><span th:id="${'name' + stat.count}" th:text="${concept.name}">  </span></td>
             <td><span th:text="${concept.dislikeUsers.size}">  </span></td>
             <td><span th:text="${concept.author.username}">  </span></td>
         </tr>
@@ -46,7 +48,22 @@
 
 </div>
 
-    <div th:insert="fragments/general.html :: menu-right"></div>
+<script th:src="@{js/jquery.js}"></script>
+
+<script th:inline="javascript">
+        function likeOrUndoLike(rowId){
+            var username = document.getElementById("username").innerText;
+            var conceptName = document.getElementById("name"+rowId).innerText;
+            conceptName = conceptName.split(' ').join('%20');
+            console.log(username+" "+conceptName);
+            //alert(username+" "+conceptName);
+
+            var url = "/add-like"; // [[@{/add-like}]]
+            $("#"+rowId).load(url + '?conceptName=' + conceptName + '&username=' + username);
+        }
+
+</script>
+<div th:insert="fragments/general.html :: menu-right"></div>
 
 </body>
 </html>
