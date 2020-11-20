@@ -37,14 +37,20 @@
         <tr th:each="concept,stat : ${concepts}">
 
             <td><span th:text="${stat.count}">  </span></td>
-            <td th:onClick="|likeOrUndoLike('${stat.count}')|">
-                <div th:id="${stat.count}" th:if="${concept.likeUsers.contains(loggedUser.get())}"
+            <td th:onClick="|likeOrUndoLike('${stat.count}')|" th:onHover="|showIcon('${stat.count}', 'like')|">
+                <div th:id="${'like'+stat.count}" th:if="${concept.likeUsers.contains(loggedUser.get())}"
                      th:text="${concept.likeUsers.size+'👍'}"></div>
-                <div th:id="${stat.count}" th:text="${concept.likeUsers.size+' '}"
+                <div th:id="${'like'+stat.count}" th:text="${concept.likeUsers.size+' '}"
                      th:unless="${concept.likeUsers.contains(loggedUser.get())}"></div>
             </td>
             <td><span th:id="${'name' + stat.count}" th:text="${concept.name}">  </span></td>
-            <td><span th:text="${concept.dislikeUsers.size}">  </span></td>
+            <td th:onClick="|dislikeOrUndoDislike('${stat.count}')|"
+                th:onHover="|showIcon('${stat.count}', 'dislike')|">
+                <div th:id="${'dislike'+stat.count}" th:if="${concept.dislikeUsers.contains(loggedUser.get())}"
+                     th:text="${concept.dislikeUsers.size+'👎'}"></div>
+                <div th:id="${'dislike'+stat.count}" th:text="${concept.dislikeUsers.size+' '}"
+                     th:unless="${concept.dislikeUsers.contains(loggedUser.get())}"></div>
+            </td>
             <td><span th:text="${concept.author.username}">  </span></td>
         </tr>
     </table>
@@ -63,8 +69,64 @@
             // <div th:id="${'likeText' + stat.count}" th:if="${concept.likeUsers.contains(loggedUser.get())}" >LIKED</div>
 
 
+
+
             var url = "/add-like"; // [[@{/add-like}]]
-            $("#"+rowId).load(url + '?conceptName=' + conceptName + '&username=' + username);
+            $("#like"+rowId).load(url + '?conceptName=' + conceptName + '&username=' + username,
+                function(){
+                    var likeText = document.getElementById("like"+rowId).innerText;
+                    if(likeText.includes("👍")){
+                        var url = "/dislikes";
+                        $("#dislike"+rowId).load(url + '?conceptName=' + conceptName );
+                    }
+                }
+
+            );
+
+
+        }
+
+        function dislikeOrUndoDislike(rowId){
+            var username = document.getElementById("username").innerText;
+            var conceptName = document.getElementById("name"+rowId).innerText;
+            conceptName = conceptName.split(' ').join('%20');
+            console.log(username+" "+conceptName);
+            //alert(username+" "+conceptName);
+            // <div th:id="${'likeText' + stat.count}" th:if="${concept.likeUsers.contains(loggedUser.get())}" >LIKED</div>
+
+
+            var url = "/add-dislike"; // [[@{/add-dislike}]]
+            $("#dislike"+rowId).load(url + '?conceptName=' + conceptName + '&username=' + username,
+
+            function(){
+                var dislikeText = document.getElementById("dislike"+rowId).innerText;
+                if(dislikeText.includes("👎")){
+                    var url = "/likes";
+                    $("#like"+rowId).load(url + '?conceptName=' + conceptName );
+
+                }
+            }
+            );
+
+
+        }
+        function showIcon(rowId, like){
+
+            if(like=="like"){
+                var likeText = document.getElementById("like"+rowId).innerText;
+                if(!likeText.includes("👍")){
+                    document.getElementById("like"+rowId).innerText = likeText+'👍';
+                }
+
+            }else if(like=="dislike"){
+                var dislikeText = document.getElementById("dislike"+rowId).innerText;
+                if(!dislikeText.includes("👎")){
+                    document.getElementById("dislike"+rowId).innerText = dislikeText+'👎';
+                }
+            }
+
+
+
         }
 
 </script>

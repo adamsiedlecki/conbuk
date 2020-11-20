@@ -16,19 +16,19 @@ import pl.adamsiedlecki.conbuk.tools.GetCurrentLoggedUser;
 import java.util.Optional;
 
 @Controller
-public class LikeController {
+public class DislikeController {
 
-    private static final Logger log = LoggerFactory.getLogger(LikeController.class);
+    private static final Logger log = LoggerFactory.getLogger(DislikeController.class);
     private final ConceptService conceptService;
     private final UserDs userDs;
 
     @Autowired
-    public LikeController(ConceptService conceptService, UserDs userDs) {
+    public DislikeController(ConceptService conceptService, UserDs userDs) {
         this.userDs = userDs;
         this.conceptService = conceptService;
     }
 
-    @GetMapping("/add-like")
+    @GetMapping("/add-dislike")
     @ResponseBody
     public String addLike(@RequestParam String conceptName, @RequestParam String username) {
         Optional<User> userByUsername = userDs.getUserByUsername(username);
@@ -40,18 +40,17 @@ public class LikeController {
             }
             Optional<Concept> conceptByName = conceptService.getConceptByName(conceptName);
             if (conceptByName.isPresent()) {
-                if (conceptByName.get().getLikeUsers().contains(userByUsername.get())) {
-                    // undo like
+                if (conceptByName.get().getDislikeUsers().contains(userByUsername.get())) {
+                    // undo dislike
+                    conceptByName.get().getDislikeUsers().remove(userByUsername.get());
+                    conceptService.flush();
+                    return "" + conceptByName.get().getDislikeUsers().size();
+                } else {
+                    // dislike
+                    conceptByName.get().getDislikeUsers().add(userByUsername.get());
                     conceptByName.get().getLikeUsers().remove(userByUsername.get());
                     conceptService.flush();
-                    return "" + conceptByName.get().getLikeUsers().size();
-                } else {
-                    // like
-                    conceptByName.get().getLikeUsers().add(userByUsername.get());
-                    conceptByName.get().getDislikeUsers().remove(userByUsername.get());
-
-                    conceptService.flush();
-                    return "" + conceptByName.get().getLikeUsers().size() + " \uD83D\uDC4D";
+                    return "" + conceptByName.get().getDislikeUsers().size() + " \uD83D\uDC4E";
                 }
 
             } else {
@@ -64,12 +63,12 @@ public class LikeController {
         return "";
     }
 
-    @GetMapping("/likes")
+    @GetMapping("/dislikes")
     @ResponseBody
-    public String getLikes(@RequestParam String conceptName) {
+    public String getDislikes(@RequestParam String conceptName) {
         Optional<Concept> conceptByName = conceptService.getConceptByName(conceptName);
         if (conceptByName.isPresent()) {
-            return "" + conceptByName.get().getLikeUsers().size();
+            return "" + conceptByName.get().getDislikeUsers().size();
         } else {
             return "no such concept in db";
         }
