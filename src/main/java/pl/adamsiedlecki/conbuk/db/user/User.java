@@ -79,15 +79,13 @@ public class User {
         User user = (User) o;
         return Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getUsername(), user.getUsername()) &&
-                Objects.equals(getPassword(), user.getPassword()) &&
-                Objects.equals(getRoles(), user.getRoles()) &&
-                Objects.equals(getLikeConcepts(), user.getLikeConcepts()) &&
-                Objects.equals(getDislikeConcepts(), user.getDislikeConcepts());
+                Objects.equals(getPassword(), user.getPassword());
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUsername(), getPassword(), getRoles(), getLikeConcepts(), getDislikeConcepts());
+        return Objects.hash(getId(), getUsername(), getPassword());
     }
 
     @Override

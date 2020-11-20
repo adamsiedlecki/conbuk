@@ -41,13 +41,15 @@ public class LikeController {
             Optional<Concept> conceptByName = conceptService.getConceptByName(conceptName);
             if (conceptByName.isPresent()) {
                 if (conceptByName.get().getLikeUsers().contains(userByUsername.get())) {
+                    // undo like
                     conceptByName.get().getLikeUsers().remove(userByUsername.get());
                     conceptService.flush();
                     return "" + conceptByName.get().getLikeUsers().size();
                 } else {
+                    // like
                     conceptByName.get().getLikeUsers().add(userByUsername.get());
                     conceptService.flush();
-                    return "" + conceptByName.get().getLikeUsers().size();
+                    return "" + conceptByName.get().getLikeUsers().size() + " \uD83D\uDC4D";
                 }
 
             } else {
