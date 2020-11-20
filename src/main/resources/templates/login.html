@@ -49,6 +49,9 @@
     <div id="errors" th:if="${(param.error != null) and (param.error[0] == 'true')}">
         <p>Login OR/AND password IS/ARE incorrect!</p>
     </div>
+    <p th:if="${registerSuccessful != null && registerSuccessful==true}">
+        Register successful!
+    </p>
 
 
 </div>

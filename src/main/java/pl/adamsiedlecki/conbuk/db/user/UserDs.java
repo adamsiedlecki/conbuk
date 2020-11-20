@@ -34,15 +34,15 @@ public class UserDs implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepo.findByUsername(username);
-        if (user == null) {
+        Optional<User> userOptional = userRepo.findByUsername(username);
+        if (!userOptional.isPresent()) {
             throw new UsernameNotFoundException(username);
         }
-        return new MyUserPrincipal(user);
+        return new MyUserPrincipal(userOptional.get());
     }
 
     public Optional<User> getUserByUsername(String username) {
-        return Optional.of(userRepo.findByUsername(username));
+        return userRepo.findByUsername(username);
     }
 
     public boolean saveUser(User user) {
@@ -52,11 +52,16 @@ public class UserDs implements UserDetailsService {
         if (user.getUsername() == null || user.getUsername().isBlank()) {
             return false;
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.saveAndFlush(user);
         return true;
     }
 
     public List<User> findAll() {
         return userRepo.findAll();
+    }
+
+    public void flush() {
+        userRepo.flush();
     }
 }

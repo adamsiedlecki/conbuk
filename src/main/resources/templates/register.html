@@ -32,23 +32,29 @@
         Wrong user or password
     </p>
 
-    <form method="post" th:action="@{/login}">
+    <form method="post" th:action="@{/register}" th:object="${userRegister}">
 
-        <label for="username">username:
+        <label for="username"> username:
             <input autofocus="autofocus" id="username" name="username" required="true" type="text">
         </label>
 
         <label for="password">password:
             <input id="password" name="password" required="true" type="password">
         </label>
+        <label for="password2">repeat password:
+            <input id="password2" name="password2" required="true" type="password">
+        </label>
 
-        <input class="button" type="submit" value="LOG ME IN">
+        <input class="button" type="submit" value="REGISTER ME">
     </form>
     <br>
     <br>
-    <div id="errors" th:if="${(param.error != null) and (param.error[0] == 'true')}">
-        <p>Login OR/AND password IS/ARE incorrect!</p>
-    </div>
+    <p th:if="${registerUsernameExist != null && registerUsernameExist==true}">
+        User with that username already exist!
+    </p>
+    <p th:if="${registerPasswordsDontMatch != null && registerPasswordsDontMatch==true}">
+        Provided passwords don't match!
+    </p>
 
 
 </div>
