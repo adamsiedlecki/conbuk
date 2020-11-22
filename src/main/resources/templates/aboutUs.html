@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style-form.css}">
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link rel="stylesheet" th:href="@{css/ranking.css}">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+    <div class="header">
+        <a class="logo">Conbuk</a>
+    </div>
+
+    <img alt="githubProfilePhoto" height="20%"
+         src="https://avatars0.githubusercontent.com/u/42897906?s=460&u=1064b5878793f8706389278be83168030e63bb21&v=4"
+         width="20%">
+    <p>I have created this project to pass a school subject, <br>
+        but instead using old-style PHP I have used Java for backend and Thymeleaf <br>
+        for integration with HTML/CSS stuff. All sources are available on my GitHub account,
+        including .ino script which turns on a led diode for 1 sec when somebody adds a new concept to database!
+    </p>
+
+</div>
+
+<script th:src="@{js/particles/particles.js}"></script>
+<script th:inline="javascript">
+        var imgSrc = /*[[@{img/logo-text-square.png}]]*/ 'smth.png';
+
+
+
+
+
+
+
+</script>
+<script th:inline="javascript" th:src="@{js/particles/particles-config-with-logo.js}"></script>
+<script>
+        tsParticles.load('particles-js', particles);
+
+
+
+
+</script>
+
+<div th:insert="fragments/general.html :: menu-right"></div>
+
+
+</body>
+</html>
