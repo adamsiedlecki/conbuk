@@ -1,7 +1,7 @@
 package pl.adamsiedlecki.conbuk.db.user;
 
 import pl.adamsiedlecki.conbuk.db.concept.Concept;
-import pl.adamsiedlecki.conbuk.db.user.userRole.UserRole;
+import pl.adamsiedlecki.conbuk.db.user.userRole.UserAuthority;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class User {
     private String username;
     private String password;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<UserRole> roles;
+    private List<UserAuthority> roles;
     @ManyToMany(mappedBy = "likeUsers")
     private List<Concept> likeConcepts = new ArrayList<>();
     @ManyToMany(mappedBy = "dislikeUsers")
@@ -64,11 +64,11 @@ public class User {
         this.password = password;
     }
 
-    public List<UserRole> getRoles() {
+    public List<UserAuthority> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<UserRole> roles) {
+    public void setRoles(List<UserAuthority> roles) {
         this.roles = roles;
     }
 

@@ -43,6 +43,9 @@
     <div class="menuElement" onClick="location.href='/about-us'">
         <a>ABOUT US</a>
     </div>
+    <div class="menuElement" onClick="location.href='/admin-panel'" sec:authorize="hasAuthority('ADMIN')">
+        <a>ADMIN PANEL</a>
+    </div>
     <div class="menuElement" onClick="location.href='/logout'">
         <a>🔒 LOGOUT (</a><span id="username" sec:authentication="name"> </span><a>)</a>
     </div>

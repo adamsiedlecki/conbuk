@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/ranking.css}">
+    <link rel="stylesheet" th:href="@{css/style-form.css}">
+
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a class="logo">Conbuk</a>
+    </div>
+
+    <form method="post" th:action="@{/remove-user}" th:object="${userId}">
+        <label for="userId">User id:
+            <input id="userId" required="required" th:field="*{id}" type="number">
+        </label>
+
+        <input class="button" type="submit" value="DELETE USER">
+    </form>
+    <p th:if="${deleted != null && deleted==true}">
+        User deleted!
+    </p>
+
+    <hr>
+    <table>
+        <tr>
+            <td colspan="2"><span> USERS </span></td>
+        </tr>
+        <tr>
+            <td><span> ID: </span></td>
+            <td><span> USERNAME: </span></td>
+
+        </tr>
+        <tr th:each="user,stat : ${users}">
+            <td><span th:text="${user.id}">  </span></td>
+            <td><span th:text="${user.username}">  </span></td>
+        </tr>
+    </table>
+
+</div>
+
+
+<div th:insert="fragments/general.html :: menu-right"></div>
+
+</body>
+</html>

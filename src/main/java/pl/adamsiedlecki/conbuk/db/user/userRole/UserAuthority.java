@@ -5,7 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 
 @Entity
-public class UserRole implements GrantedAuthority {
+public class UserAuthority implements GrantedAuthority {
 
     @Id
     @Column
@@ -13,11 +13,11 @@ public class UserRole implements GrantedAuthority {
     private Long id;
     private String role;
 
-    public UserRole(String role) {
+    public UserAuthority(String role) {
         this.role = role;
     }
 
-    public UserRole() {
+    public UserAuthority() {
     }
 
     @Override
@@ -40,6 +40,13 @@ public class UserRole implements GrantedAuthority {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "role='" + role + '\'' +
+                '}';
     }
 }
 

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.adamsiedlecki.conbuk.db.user.userRole.UserAuthority;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +29,10 @@ public class UserDs implements UserDetailsService {
 
         User user2 = new User();
         user2.setUsername("admin");
+        user2.setRoles(List.of(new UserAuthority("ADMIN")));
         user2.setPassword(passwordEncoder.encode("admin"));
         userRepo.saveAndFlush(user2);
+        System.out.println(findAll());
     }
 
     @Override
@@ -63,5 +66,22 @@ public class UserDs implements UserDetailsService {
 
     public void flush() {
         userRepo.flush();
+    }
+
+    public void removeUserById(Long id) {
+        Optional<User> userById = getUserById(id);
+        if (userById.isPresent()) {
+            User u = userById.get();
+            u.setRoles(List.of());
+            u.setLikeConcepts(List.of());
+            u.setDislikeConcepts(List.of());
+            userRepo.flush();
+            //userRepo.deleteById(id);
+        }
+
+    }
+
+    public Optional<User> getUserById(Long id) {
+        return userRepo.findById(id);
     }
 }
