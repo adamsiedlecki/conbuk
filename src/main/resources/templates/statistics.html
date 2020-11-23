@@ -22,36 +22,26 @@
     <div class="header">
         <a class="logo">Conbuk</a>
     </div>
-    <hr>
-    <a href="/statistics" style="font-family: Oswald; color: black; font-size: 25px;">STATISTICS</a>
-    <hr>
 
-    <form method="post" th:action="@{/remove-user}" th:object="${userId}">
-        <label for="userId">User id:
-            <input id="userId" required="required" th:field="*{id}" type="number">
-        </label>
-
-        <input class="button" type="submit" value="DELETE USER">
-    </form>
-    <p th:if="${deleted != null && deleted==true}">
-        User deleted!
-    </p>
-
-    <hr>
     <table>
         <tr>
-            <td colspan="2"><span> USERS </span></td>
+            <td colspan="3"><span> STATISTICS </span></td>
         </tr>
         <tr>
-            <td><span> ID: </span></td>
-            <td><span> USERNAME: </span></td>
+            <td><span> language: </span></td>
+            <td><span> files: </span></td>
+            <td><span> lines of code: </span></td>
 
         </tr>
-        <tr th:each="user,stat : ${users}">
-            <td><span th:text="${user.id}">  </span></td>
-            <td><span th:text="${user.username}">  </span></td>
+        <tr th:each="statis,stat : ${stats}">
+            <td><span th:text="${statis.language}">  </span></td>
+            <td><span th:text="${statis.files}">  </span></td>
+            <td><span th:text="${statis.lines}">  </span></td>
         </tr>
     </table>
+
+    <hr>
+
 
 </div>
 

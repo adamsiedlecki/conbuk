@@ -51,10 +51,17 @@ public class AdminPanel {
 
             }
             userDs.removeUserById(userId.getId());
-            m.addAttribute("deleted", existed);
+
         }
 
+        m.addAttribute("deleted", existed);
+        m.addAttribute("users", userDs.findAll());
+        return "adminPanel";
+    }
 
+    @GetMapping("/remove-user")
+    public String removeUser(Model m) {
+        m.addAttribute("users", userDs.findAll());
         return "adminPanel";
     }
 }
