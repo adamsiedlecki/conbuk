@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>conbuk</title>
+    <link rel="stylesheet" th:href="@{css/ranking.css}">
+    <link rel="stylesheet" th:href="@{css/style-form.css}">
+
+    <link rel="icon"
+          th:href="@{img/logo500.png}"
+          type="image/png">
+
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald&family=Caveat:wght@700&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="js/chat.js" th:src="@{js/chat.js}"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group" hidden>
+                    <label for="connect">WebSocket connection:</label>
+                    <button class="btn btn-default" id="connect" type="submit">Connect</button>
+                    <button class="btn btn-default" disabled="disabled" id="disconnect" type="submit">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <form>
+                <div>
+                    <label for="content">Message :</label>
+                    <input id="content" placeholder="Your message here..." type="text">
+                </div>
+                <button class="button" id="send" type="submit">SEND</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div>
+            <table>
+
+                <tbody id="messages" style="border: 0;">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:insert="fragments/general.html :: menu-right"></div>
+
+
+</body>
+</html>
