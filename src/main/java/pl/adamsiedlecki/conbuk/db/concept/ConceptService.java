@@ -31,7 +31,7 @@ public class ConceptService {
         c2.setAuthor(userDs.getUserByUsername("admin").get());
         c2.setName("country but without taxes");
         c2.getLikeUsers().add(userDs.getUserByUsername("admin").get());
-        c2.getLikeUsers().add(userDs.getUserByUsername("a").get());
+        c2.getLikeUsers().add(userDs.getUserByUsername("user").get());
         c2.setSaveTime(LocalDateTime.now());
         conceptRepo.saveAndFlush(c2);
 
@@ -84,5 +84,9 @@ public class ConceptService {
 
     public void flush() {
         conceptRepo.flush();
+    }
+
+    public void deleteConcept(Concept c) {
+        conceptRepo.delete(c);
     }
 }

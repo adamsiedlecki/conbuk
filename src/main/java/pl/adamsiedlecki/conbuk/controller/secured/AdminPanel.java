@@ -41,8 +41,14 @@ public class AdminPanel {
             List<Concept> all = conceptService.findAll();
             User u = userDs.getUserById(userId.getId()).get();
             for (Concept c : all) {
-                c.getLikeUsers().remove(u);
-                c.getDislikeUsers().remove(u);
+                if (c.getAuthor().getId() == userId.getId()) {
+                    conceptService.deleteConcept(c);
+                } else {
+                    c.getLikeUsers().remove(u);
+                    c.getDislikeUsers().remove(u);
+                }
+
+
             }
             userDs.removeUserById(userId.getId());
             m.addAttribute("deleted", existed);

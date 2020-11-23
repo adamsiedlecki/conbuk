@@ -23,8 +23,8 @@ public class UserDs implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
 
         User user = new User();
-        user.setUsername("a");
-        user.setPassword(passwordEncoder.encode("a"));
+        user.setUsername("user");
+        user.setPassword(passwordEncoder.encode("user"));
         userRepo.saveAndFlush(user);
 
         User user2 = new User();
@@ -76,7 +76,7 @@ public class UserDs implements UserDetailsService {
             u.setLikeConcepts(List.of());
             u.setDislikeConcepts(List.of());
             userRepo.flush();
-            //userRepo.deleteById(id);
+            userRepo.deleteById(id);
         }
 
     }
