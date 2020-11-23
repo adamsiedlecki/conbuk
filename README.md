@@ -15,3 +15,5 @@ Technologies used:
 - Javascript
 - HTML
 - CSS
+- web sockets (live chat)
+- C++ (.ino script for esp)
