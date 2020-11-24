@@ -21,26 +21,31 @@ public class ConceptService {
         this.conceptRepo = conceptRepo;
         this.userDs = userDs;
 
-        Concept c = new Concept();
-        c.setAuthor(userDs.getUserByUsername("admin").get());
-        c.setName("face*ook but without spying");
-        c.setSaveTime(LocalDateTime.now());
-        conceptRepo.saveAndFlush(c);
+        if (!getConceptByName("face*ook but without spying").isPresent()) {
+            Concept c = new Concept();
+            c.setAuthor(userDs.getUserByUsername("admin").get());
+            c.setName("face*ook but without spying");
+            c.setSaveTime(LocalDateTime.now());
+            conceptRepo.saveAndFlush(c);
+        }
+        if (!getConceptByName("country but without taxes").isPresent()) {
+            Concept c2 = new Concept();
+            c2.setAuthor(userDs.getUserByUsername("admin").get());
+            c2.setName("country but without taxes");
+            c2.getLikeUsers().add(userDs.getUserByUsername("admin").get());
+            c2.getLikeUsers().add(userDs.getUserByUsername("user").get());
+            c2.setSaveTime(LocalDateTime.now());
+            conceptRepo.saveAndFlush(c2);
+        }
+        if (!getConceptByName("school but without marks").isPresent()) {
+            Concept c3 = new Concept();
+            c3.setSaveTime(LocalDateTime.now());
+            c3.setAuthor(userDs.getUserByUsername("admin").get());
+            c3.setName("school but without marks");
+            c3.getLikeUsers().add(userDs.getUserByUsername("admin").get());
+            conceptRepo.saveAndFlush(c3);
+        }
 
-        Concept c2 = new Concept();
-        c2.setAuthor(userDs.getUserByUsername("admin").get());
-        c2.setName("country but without taxes");
-        c2.getLikeUsers().add(userDs.getUserByUsername("admin").get());
-        c2.getLikeUsers().add(userDs.getUserByUsername("user").get());
-        c2.setSaveTime(LocalDateTime.now());
-        conceptRepo.saveAndFlush(c2);
-
-        Concept c3 = new Concept();
-        c3.setSaveTime(LocalDateTime.now());
-        c3.setAuthor(userDs.getUserByUsername("admin").get());
-        c3.setName("school but without marks");
-        c3.getLikeUsers().add(userDs.getUserByUsername("admin").get());
-        conceptRepo.saveAndFlush(c3);
 
 //        for (int i = 1; i <= 100; i++) {
 //            Concept c4 = new Concept();

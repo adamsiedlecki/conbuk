@@ -10,4 +10,5 @@ public class ConbukApplication {
 		SpringApplication.run(ConbukApplication.class, args);
 	}
 
+
 }

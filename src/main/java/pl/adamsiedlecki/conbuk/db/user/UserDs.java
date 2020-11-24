@@ -22,17 +22,22 @@ public class UserDs implements UserDetailsService {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
 
-        User user = new User();
-        user.setUsername("user");
-        user.setPassword(passwordEncoder.encode("user"));
-        userRepo.saveAndFlush(user);
+        if (!getUserByUsername("user").isPresent()) {
+            User user = new User();
+            user.setUsername("user");
+            user.setPassword(passwordEncoder.encode("user"));
+            userRepo.saveAndFlush(user);
+        }
 
-        User user2 = new User();
-        user2.setUsername("admin");
-        user2.setRoles(List.of(new UserAuthority("ADMIN")));
-        user2.setPassword(passwordEncoder.encode("admin"));
-        userRepo.saveAndFlush(user2);
-        System.out.println(findAll());
+        if (!getUserByUsername("admin").isPresent()) {
+            User user2 = new User();
+            user2.setUsername("admin");
+            user2.setRoles(List.of(new UserAuthority("ADMIN")));
+            user2.setPassword(passwordEncoder.encode("admin"));
+            userRepo.saveAndFlush(user2);
+            System.out.println(findAll());
+        }
+
     }
 
     @Override
