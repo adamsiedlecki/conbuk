@@ -16,7 +16,7 @@ Technologies used:
 - Java
 - Spring Boot with Spring Security
 - Thymeleaf
-- HyperSQL
+- H2 db
 - JPA/Hibernate
 - particlesjs by VincentGarreau https://github.com/VincentGarreau/particles.js/
 - Javascript
