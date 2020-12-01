@@ -10,7 +10,7 @@ How to run:
 - go into terminal
 - execute (nameOfTheJar is file name): ```cmd java -jar nameOfTheJar.jar ```
 - go to browser: http://localhost:80
-- login or register (you can use default admin admin and user user acounts)
+- login or register (you can use default *admin admin* and *user user* accounts)
 
 Technologies used:
 - Java
