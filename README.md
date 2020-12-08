@@ -24,3 +24,9 @@ Technologies used:
 - CSS
 - web sockets (live chat)
 - C++ (.ino script for esp)
+
+Visualisation:
+<br>
+![Main page](materials/1.JPG)
+<br>
+![top 100 ranking](materials/2.JPG)
