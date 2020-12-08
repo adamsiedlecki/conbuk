@@ -35,7 +35,6 @@ public class UserDs implements UserDetailsService {
             user2.setRoles(List.of(new UserAuthority("ADMIN")));
             user2.setPassword(passwordEncoder.encode("admin"));
             userRepo.saveAndFlush(user2);
-            System.out.println(findAll());
         }
 
     }
