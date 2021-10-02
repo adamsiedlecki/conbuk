@@ -1,6 +1,8 @@
 # conbuk
 conbuk aka ConceptBucket is a project which allows people to share their ideas that they wish to come true.
 
+This project was created to pass a subject at secondary school - [ZS Jasieniec](https://www.zspjasieniec.pl/)
+
 Requirements to run:
 - computer
 - Java 11
